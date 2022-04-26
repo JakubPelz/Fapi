@@ -19,3 +19,21 @@ code {
   padding: 10px;
   box-shadow: 2px 4px;
 }
+
+.link-none {
+  text-decoration: none;
+  color: inherit;
+}
+
+.main-color {
+  background-color: #2196f3;
+}
+
+.secondary-color {
+  background-color: #1769aa;
+}
+
+.third-color {
+  background-color: #4dabf5;
+}
+

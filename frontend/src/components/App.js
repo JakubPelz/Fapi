@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import routes from './routes/Routes';
 import { UserContext } from './context/UserContext';
 import { CardContext } from './context/CardContext';
+import FooterNavBar from './navBar/FooterNavBar';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -29,6 +30,7 @@ function App() {
               ></Route>
             ))}
           </Routes>
+          <FooterNavBar />
         </BrowserRouter>
       </UserContext.Provider>
     </CardContext.Provider>
