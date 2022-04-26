@@ -1,11 +1,28 @@
 import React from 'react'
+import { useState } from 'react'
+import { Navigate } from 'react-router-dom'
 import { UserContext } from '../components/context/UserContext'
 
 const CustomerInfo = () => {
+  const [name, setName] = useState("")
+  const [companyName, setCompanyName] = useState("")
+  const [email, setEmail] = useState("")
+  const [address, setAddress] = useState("")
+  const [city, setCity] = useState("")
+  const [zip, setZip] = useState("")
+  const [redirect, setRedirect] = useState(false);
+
   const { user, setUser } = React.useContext(UserContext)
 
   const submit = async (e) => {
     e.preventDefault();
+    const response = { name, companyName, email, address, city, zip };
+    setUser(response)
+    setRedirect(true)
+  }
+
+  if (redirect) {
+    return <Navigate to={"/products"} />
   }
   return (
     <div className='ui vertical mashead segment' style={{ marginTop: "50px" }}>
@@ -25,21 +42,21 @@ const CustomerInfo = () => {
                       <input
                         type="text"
                         name="First name"
-                        placeholder="Jméno a příjmení"
-                        id="First name"
-                        required
+                        placeholder={user === null ? "Jména a příjmení" : user.name}
 
+                        required
+                        onChange={(e) => setName(e.target.value)}
                       />
                     </div>
                     <div className="field">
                       <label>Název firmy</label>
                       <input
                         type="text"
-                        name="Last name"
-                        placeholder="Jméno firmy"
-                        id="Last name"
+                        name="Název firmy"
+                        placeholder={user === null ? "Název firmy" : user.companyName}
+
                         required
-                      /*      onChange={(e) => setCompanyName(e.target.value)} */
+                        onChange={(e) => setCompanyName(e.target.value)}
                       />
                     </div>
                     <div className="field">
@@ -47,10 +64,10 @@ const CustomerInfo = () => {
                       <input
                         type="text"
                         name="email"
-                        placeholder="Email"
+                        placeholder={user === null ? "Email" : user.email}
                         id="email"
                         required
-                      /*   onChange={(e) => setEmail(e.target.value)} */
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
                   </div>
@@ -62,10 +79,10 @@ const CustomerInfo = () => {
                       <input
                         type="text"
                         name="First name"
-                        placeholder="Město"
+                        placeholder={user === null ? "Město" : user.city}
                         id="First name"
                         required
-                      /*        onChange={(e) => setCity(e.target.value)} */
+                        onChange={(e) => setCity(e.target.value)}
                       />
                     </div>
                     <div className="field">
@@ -73,10 +90,10 @@ const CustomerInfo = () => {
                       <input
                         type="text"
                         name="Last name"
-                        placeholder="Ulice a číslo popisné"
+                        placeholder={user === null ? "Ulice a číslo popisné" : user.address}
                         id="Last name"
                         required
-                      /*             onChange={(e) => setStreet(e.target.value)} */
+                        onChange={(e) => setAddress(e.target.value)}
                       />
                     </div>
                     <div className="field">
@@ -84,10 +101,10 @@ const CustomerInfo = () => {
                       <input
                         type="text"
                         name="email"
-                        placeholder="Email"
+                        placeholder={user === null ? "PSČ" : user.zip}
                         id="email"
                         required
-                      /*            onChange={(e) => setZipCide(e.target.value)} */
+                        onChange={(e) => setZip(e.target.value)}
                       />
                     </div>
                   </div>
@@ -97,10 +114,11 @@ const CustomerInfo = () => {
                   className="ui button"
                   type="submit"
                   style={{ marginTop: '30px' }}
-
+                  onClick={submit}
                 >
                   Potvrdit
                 </button>
+
               </form>
             </div>
           </div>
