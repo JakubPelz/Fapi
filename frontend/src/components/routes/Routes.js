@@ -1,3 +1,4 @@
+import CustomerInfo from '../../pages/CustomerInfo';
 import Home from '../../pages/Home';
 
 const routes = [
@@ -6,7 +7,12 @@ const routes = [
     exact: true,
     component: Home,
     name: 'Home Page',
-    protected: false,
+  },
+  {
+    path: '/customer',
+    exact: true,
+    component: CustomerInfo,
+    name: 'Customer Information',
   },
 ];
 
