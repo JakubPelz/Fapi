@@ -1,4 +1,5 @@
 import CustomerInfo from '../../pages/CustomerInfo';
+import FinalPage from '../../pages/FinalPage';
 import Home from '../../pages/Home';
 import Products from '../../pages/Products';
 
@@ -20,6 +21,12 @@ const routes = [
     exact: true,
     component: Products,
     name: 'Produkty',
+  },
+  {
+    path: '/final',
+    exact: true,
+    component: FinalPage,
+    name: 'Rekapitulace objednávky',
   },
 ];
 

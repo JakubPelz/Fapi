@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import routes from './routes/Routes';
 import { UserContext } from './context/UserContext';
 import { CardContext } from './context/CardContext';
-import FooterNavBar from './navBar/FooterNavBar';
+import TopNavBar from './navBar/TopNavBar';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -16,10 +16,14 @@ function App() {
     [shopCard, setShopCard]
   );
 
+  console.log(user);
+  console.log(shopCard);
+
   return (
     <CardContext.Provider value={valueCard}>
       <UserContext.Provider value={valueUser}>
         <BrowserRouter>
+          <TopNavBar />
           <Routes>
             {routes.map((route, index) => (
               <Route
@@ -30,7 +34,6 @@ function App() {
               ></Route>
             ))}
           </Routes>
-          <FooterNavBar />
         </BrowserRouter>
       </UserContext.Provider>
     </CardContext.Provider>
