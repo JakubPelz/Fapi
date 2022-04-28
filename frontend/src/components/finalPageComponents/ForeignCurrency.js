@@ -1,19 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import moment from 'moment';
 import axios from 'axios';
+import { ForeignContext } from '../context/ForeignContext';
 
 const ForeignCurrency = () => {
-  const [eur, setEur] = useState('');
+  const { foreign, setForeign } = React.useContext(ForeignContext);
 
   const URL = 'http://localhost:5000/';
 
   useEffect(() => {
     (async () => {
       const { data } = await axios.get(URL);
-      setEur(data);
+      setForeign(data);
     })();
   }, []);
-  console.log(eur);
-  return <div>ForeignCurrency</div>;
+
+  return (
+    <div>
+      <div>
+        Kurz EURA stanovená ČNB k dnešnímu ke dni {moment().format('L')}
+      </div>
+      <div style={{ marginTop: '15px' }}>
+        <h4>{foreign} Kč za 1 EUR</h4>
+      </div>
+    </div>
+  );
 };
 
 export default ForeignCurrency;
