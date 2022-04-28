@@ -5,6 +5,7 @@ import { Navigate } from 'react-router';
 const Baskets = (props) => {
   const { cartItems, onAdd, onRemove } = props;
   const { setShopCard } = React.useContext(CardContext);
+
   const [redirect, setRedirect] = useState(false);
 
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);

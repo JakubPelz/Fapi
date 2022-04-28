@@ -1,8 +1,36 @@
 import React from 'react'
+import ProductsFinal from '../components/finalPageComponents/ProductsFinal'
+import UserFinal from '../components/finalPageComponents/UserFinal'
+import FinalPrice from '../components/finalPageComponents/FinalPrice'
+import ForeignCurrency from '../components/finalPageComponents/ForeignCurrency'
 
 const FinalPage = () => {
   return (
-    <div>FinalPage</div>
+    <>
+      <div className='ui middle aligned center aligned grid' style={{ marginTop: "50px" }}>
+        <div className="ui vertical center aligned footer segment">
+          <h1>Rekapitulace objednávky</h1>
+          <div style={{ marginTop: "20px" }}>
+            <h3>Údaje k objednávce:</h3>
+            <UserFinal />
+          </div>
+          <div style={{ marginTop: "20px" }}>
+            <h3>Objednané produkty:</h3>
+            <ProductsFinal />
+          </div>
+        </div>
+      </div>
+      <div className='ui middle aligned center aligned grid' style={{ marginTop: "50px" }}>
+        <div className="ui vertical right aligned footer segment">
+          <h3>Rekapitulace ceny:</h3>
+          <FinalPrice />
+        </div>
+        <div className="ui vertical right aligned footer segment" style={{ marginLeft: "15rem" }}>
+          <h3>Věděli jste že u nás můžete platit cizí měnou?</h3>
+          <ForeignCurrency />
+        </div>
+      </div>
+    </>
   )
 }
 

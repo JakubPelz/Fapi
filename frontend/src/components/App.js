@@ -16,9 +16,6 @@ function App() {
     [shopCard, setShopCard]
   );
 
-  console.log(user);
-  console.log(shopCard);
-
   return (
     <CardContext.Provider value={valueCard}>
       <UserContext.Provider value={valueUser}>
