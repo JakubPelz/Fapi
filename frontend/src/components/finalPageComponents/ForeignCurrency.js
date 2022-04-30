@@ -6,7 +6,7 @@ import { ForeignContext } from '../context/ForeignContext';
 const ForeignCurrency = () => {
   const { foreign, setForeign } = React.useContext(ForeignContext);
 
-  const URL = 'http://localhost:5000/';
+  const URL = 'https://cnbeur.herokuapp.com/';
 
   useEffect(() => {
     (async () => {
