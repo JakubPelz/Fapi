@@ -21,7 +21,7 @@ const CompanyInput = ({ user, companyName, setCompanyName }) => {
       <input
         type="text"
         name="company"
-        placeholder={user === null ? 'Název firmy' : companyName}
+        placeholder={user === null ? 'Název firmy' : user.companyName}
         required
         onChange={(e) => setCompanyName(e.target.value)}
       />

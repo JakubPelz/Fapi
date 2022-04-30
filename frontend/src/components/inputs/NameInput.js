@@ -20,7 +20,7 @@ const NameInput = ({ user, name, setName }) => {
       <input
         type="text"
         name="name"
-        placeholder={user === null ? 'Jméno a příjmení' : name}
+        placeholder={user === null ? 'Jméno a příjmení' : user.name}
         required
         onChange={(e) => setName(e.target.value)}
       />

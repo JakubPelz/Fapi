@@ -19,7 +19,7 @@ const AddressInput = ({ address, user, setAddress }) => {
       <input
         type="text"
         name="address"
-        placeholder={user === null ? 'Ulice a číslo popisné' : address}
+        placeholder={user === null ? 'Ulice a číslo popisné' : user.address}
         id="Last name"
         required
         onChange={(e) => setAddress(e.target.value)}

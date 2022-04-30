@@ -21,7 +21,7 @@ const CityInput = ({ user, city, setCity }) => {
       <input
         type="text"
         name="city"
-        placeholder={user === null ? 'Město' : city}
+        placeholder={user === null ? 'Město' : user.city}
         id="First name"
         required
         onChange={(e) => setCity(e.target.value)}

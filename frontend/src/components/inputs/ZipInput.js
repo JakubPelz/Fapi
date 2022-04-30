@@ -17,7 +17,7 @@ const ZipInput = ({ user, setZip, zip }) => {
       <input
         type="text"
         name="zip"
-        placeholder={user === null ? 'PSČ' : zip}
+        placeholder={user === null ? 'PSČ' : user.zip}
         id="email"
         required
         onChange={(e) => setZip(e.target.value)}
