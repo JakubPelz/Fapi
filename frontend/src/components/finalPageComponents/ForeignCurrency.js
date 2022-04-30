@@ -11,7 +11,10 @@ const ForeignCurrency = () => {
   useEffect(() => {
     (async () => {
       const { data } = await axios.get(URL);
-      setForeign(data);
+
+      const euroString = data;
+      const euroFinal = parseFloat(euroString.replace(',', '.')).toFixed(3);
+      setForeign(euroFinal);
     })();
   }, []);
 

@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
 import { CardContext } from '../context/CardContext';
+import { ForeignContext } from '../context/ForeignContext';
 
 const EurProductsFinal = () => {
   const product = useContext(CardContext);
+
+  const euro = useContext(ForeignContext);
 
   return (
     <table className="ui celled table">
@@ -34,17 +37,17 @@ const EurProductsFinal = () => {
                   </td>
                   <td data-label="Age">{item.name}</td>
                   <td data-label="Name" style={{ textAlign: 'center' }}>
-                    {item.price} Kč
+                    {(item.price / euro.foreign).toFixed(3)} EUR
                   </td>
                   <td data-label="Name" style={{ textAlign: 'center' }}>
-                    {item.price * item.qty} EUR
+                    {((item.price * item.qty) / euro.foreign).toFixed(3)} EUR
                   </td>
                   <td data-label="Name" style={{ textAlign: 'center' }}>
                     <strong>
                       {(
-                        item.price * item.qty +
-                        item.price * 0.15 * item.qty
-                      ).toFixed(0)}{' '}
+                        (item.price * item.qty + item.price * 0.15 * item.qty) /
+                        euro.foreign
+                      ).toFixed(3)}{' '}
                       EUR
                     </strong>
                   </td>
