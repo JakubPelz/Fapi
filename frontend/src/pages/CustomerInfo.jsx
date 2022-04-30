@@ -2,6 +2,12 @@ import React from 'react'
 import { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import { UserContext } from '../components/context/UserContext'
+import AddressInput from '../components/inputs/AddressInput'
+import CityInput from '../components/inputs/CityInput'
+import CompanyInput from '../components/inputs/CompanyInput'
+import EmailInput from '../components/inputs/EmailInput'
+import NameInput from '../components/inputs/NameInput'
+import ZipInput from '../components/inputs/ZipInput'
 
 const CustomerInfo = () => {
   const [name, setName] = useState("")
@@ -12,7 +18,6 @@ const CustomerInfo = () => {
   const [zip, setZip] = useState("")
   const [redirect, setRedirect] = useState(false);
   const { user, setUser } = React.useContext(UserContext)
-
 
   const isValidName = name != null && name.trim().length > 0;
   const isValidCompany = companyName != null && companyName.trim().length > 0;
@@ -46,81 +51,16 @@ const CustomerInfo = () => {
               <form className="ui form">
                 <div className="ui stackable inverted divided grid">
                   <div className="eight wide column">
-                    <div className="field">
-                      <h3>Objednavatel</h3>
-                      <label>Jméno a příjmení</label>
-                      <input
-                        type="text"
-                        name="name"
-                        placeholder={user === null ? "Jméno a příjmení" : user.name}
-                        required
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                      {!isValidName ? <div className="validation">Vypňte jméno a příjmení</div> : <div></div>}
-                    </div>
-                    <div className="field">
-                      <label>Název firmy</label>
-                      <input
-                        type="text"
-                        name="company"
-                        placeholder={user === null ? "Název firmy" : user.companyName}
-                        required
-                        onChange={(e) => setCompanyName(e.target.value)}
-                      />
-                      {!isValidCompany ? <div className="validation">Vyplňte název firmy</div> : <div></div>}
-                    </div>
-                    <div className="field">
-                      <label>Email</label>
-                      <input
-                        type="text"
-                        name="email"
-                        placeholder={user === null ? "Email" : user.email}
-                        id="email"
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                      {!isValidEmail ? <div className="validation">Vyplňte email</div> : <div></div>}
-
-                    </div>
+                    <NameInput user={user} setName={setName} name={name} />
+                    <CompanyInput user={user} setCompanyName={setCompanyName} companyName={companyName} />
+                    <EmailInput user={user} setEmail={setEmail} email={email} />
                   </div>
 
                   <div className="eight wide column">
                     <h3>Adresa</h3>
-                    <div className="field">
-                      <label>Město</label>
-                      <input
-                        type="text"
-                        name="city"
-                        placeholder={user === null ? "Město" : user.city}
-                        id="First name"
-                        required
-                        onChange={(e) => setCity(e.target.value)}
-                      />
-                      {!isValidCity ? <div className="validation">Vyplňte město</div> : <div></div>}
-                    </div>
-                    <div className="field">
-                      <label>Ulice včetně č.p.</label>
-                      <input
-                        type="text"
-                        name="address"
-                        placeholder={user === null ? "Ulice a číslo popisné" : user.address}
-                        id="Last name"
-                        required
-                        onChange={(e) => setAddress(e.target.value)}
-                      />
-                      {!isValidAddress ? <div className="validation">Vyplňte ulici</div> : <div></div>}
-                    </div>
-                    <div className="field">
-                      <label>PSČ</label>
-                      <input
-                        type="text"
-                        name="zip"
-                        placeholder={user === null ? "PSČ" : user.zip}
-                        id="email"
-                        required
-                        onChange={(e) => setZip(e.target.value)}
-                      />
-                      {!isValidZip ? <div className="validation">Vypľňte poštovní směrovací číslo</div> : <div></div>}
-                    </div>
+                    <CityInput city={city} setCity={setCity} user={user} />
+                    <AddressInput user={user} setAddress={setAddress} address={address} />
+                    <ZipInput user={user} setZip={setZip} zip={zip} />
                   </div>
                 </div>
 
